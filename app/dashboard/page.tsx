@@ -1,7 +1,10 @@
+'use client';
+import React, { useState, useContext } from 'react';
 import { AreaGraph } from '@/components/charts/area-graph';
 import { BarGraph } from '@/components/charts/bar-graph';
 import { PieGraph } from '@/components/charts/pie-graph';
 import { CalendarDateRangePicker } from '@/components/date-range-picker';
+import CheckloginContext from '@/app/context/auth/CheckloginContext';
 import PageContainer from '@/components/layout/page-container';
 import { RecentSales } from '@/components/recent-sales';
 import { Button } from '@/components/ui/button';
@@ -15,12 +18,13 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function page() {
+  const Contextdata = useContext(CheckloginContext);
   return (
     <PageContainer scrollable={true}>
       <div className="space-y-2">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-2xl font-bold tracking-tight">
-            Hi, Welcome back 👋
+            {Contextdata.UserData && `Hi ${Contextdata.UserData.name}👋`}
           </h2>
           <div className="hidden items-center space-x-2 md:flex">
             <CalendarDateRangePicker />

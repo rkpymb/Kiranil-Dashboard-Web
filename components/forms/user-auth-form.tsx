@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -10,12 +11,11 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signIn } from 'next-auth/react';
+
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import GithubSignInButton from '../github-auth-button';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Enter a valid email address' })
@@ -23,7 +23,7 @@ const formSchema = z.object({
 
 type UserFormValue = z.infer<typeof formSchema>;
 
-export default function UserAuthForm() {
+function UserAuthForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl');
   const [loading, setLoading] = useState(false);
@@ -36,10 +36,7 @@ export default function UserAuthForm() {
   });
 
   const onSubmit = async (data: UserFormValue) => {
-    signIn('credentials', {
-      email: data.email,
-      callbackUrl: callbackUrl ?? '/dashboard'
-    });
+    // Handle form submission here
   };
 
   return (
@@ -83,7 +80,14 @@ export default function UserAuthForm() {
           </span>
         </div>
       </div>
-      <GithubSignInButton />
     </>
+  );
+}
+
+export default function UserAuthPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UserAuthForm />
+    </Suspense>
   );
 }
