@@ -9,8 +9,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: 'Kiranil Dashboard',
+  description: 'Kiranil Dashboard Panel'
 };
 
 export default async function RootLayout({
@@ -20,6 +20,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="manifest"
+          href={'https://api.roservicewalaindia.in/open/manifest.json'}
+        />
+      </head>
       <body
         className={`${inter.className} overflow-hidden `}
         suppressHydrationWarning={true}

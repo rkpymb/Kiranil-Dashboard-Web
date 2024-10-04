@@ -28,7 +28,12 @@ import {
   User,
   User2Icon,
   UserX2Icon,
-  X
+  X,
+  Package,
+  UserSquare2,
+  Users2,
+  ListTodo,
+  LayoutList
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
@@ -36,6 +41,9 @@ export type Icon = LucideIcon;
 export const Icons = {
   dashboard: LayoutDashboardIcon,
   logo: Command,
+  ListTodo: ListTodo,
+  Users2: Users2,
+  UserSquare2: UserSquare2,
   login: LogIn,
   close: X,
   profile: User2Icon,
@@ -60,6 +68,9 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  Package: Package,
+  LayoutList: LayoutList,
+
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

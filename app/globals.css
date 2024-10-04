@@ -78,3 +78,31 @@
     height: 100dvh;
   }
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* color of the scrollbar thumb */
+  border-radius: 10px; /* round the edges of the scrollbar thumb */
+  border: 2px solid #f1f1f1; /* padding around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color when hovering over the scrollbar */
+}

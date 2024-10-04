@@ -1,8 +1,8 @@
 'use client';
-
+import { useContext } from 'react';
+import CheckloginContext from '@/app/context/auth/CheckloginContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { NavItem } from '@/types';
@@ -14,6 +14,9 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from './ui/tooltip';
+
+// Define a type that includes all the possible keys in Icons
+type IconKeys = keyof typeof Icons;
 
 interface DashboardNavProps {
   items: NavItem[];
@@ -28,18 +31,21 @@ export function DashboardNav({
 }: DashboardNavProps) {
   const path = usePathname();
   const { isMinimized } = useSidebar();
+  const Contextdata = useContext(CheckloginContext);
+  const userRole = Contextdata.UserData ? Contextdata.UserData.Role : null;
 
   if (!items?.length) {
     return null;
   }
 
-  console.log('isActive', isMobileNav, isMinimized);
+  // Filter items based on user role
+  const filteredItems = items.filter((item) => item.Role === userRole);
 
   return (
     <nav className="grid items-start gap-2">
       <TooltipProvider>
-        {items.map((item, index) => {
-          const Icon = Icons[item.icon || 'arrowRight'];
+        {filteredItems.map((item, index) => {
+          const Icon = Icons[item.icon as IconKeys];
           return (
             item.href && (
               <Tooltip key={index}>
@@ -56,7 +62,6 @@ export function DashboardNav({
                     }}
                   >
                     <Icon className={`ml-3 size-5 flex-none`} />
-
                     {isMobileNav || (!isMinimized && !isMobileNav) ? (
                       <span className="mr-2 truncate">{item.title}</span>
                     ) : (

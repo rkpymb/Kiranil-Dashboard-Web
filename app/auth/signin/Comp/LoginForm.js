@@ -22,17 +22,17 @@ const formSchema = z.object({
   mobile: z
     .string()
     .length(10, { message: 'Mobile number must be exactly 10 digits' }),
-  password: z.string().optional()
+  PassKey: z.string().optional()
 });
 
 function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl');
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassKey, setShowPassKey] = useState(false);
   const defaultValues = {
     mobile: '',
-    password: ''
+    PassKey: ''
   };
 
   const form = useForm({
@@ -44,17 +44,17 @@ function LoginForm() {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/admin/login-auth`,
+        `${process.env.NEXT_PUBLIC_API_URL}/mechanic/login-auth`,
         data
       );
-      console.log(response.data);
-      if (response.data.Opration) {
+
+      if (response.data.operation == true) {
         Cookies.set('token', response.data.token, { expires: 7 });
         Cookies.set('userData', JSON.stringify(response.data.UserData), {
           expires: 7
         });
         alert('Login Succesfull!');
-        window.location.href = `/dashboard`;
+        window.location.href = `/mechanic`;
       } else {
         alert('Login failed!');
       }
@@ -99,28 +99,28 @@ function LoginForm() {
 
           <FormField
             control={form.control}
-            name="password"
+            name="PassKey"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="Enter your password..."
+                      type={showPassKey ? 'text' : 'password'}
+                      placeholder="Enter your Password..."
                       disabled={loading}
                       {...field}
                       onChange={(e) => {
                         field.onChange(e);
-                        form.clearErrors('password');
+                        form.clearErrors('PassKey');
                       }}
                     />
                     <button
                       type="button"
                       className="absolute inset-y-0 right-0 flex items-center pr-3"
-                      onClick={() => setShowPassword((prev) => !prev)}
+                      onClick={() => setShowPassKey((prev) => !prev)}
                     >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                      {showPassKey ? <FaEyeSlash /> : <FaEye />}
                     </button>
                   </div>
                 </FormControl>

@@ -115,36 +115,78 @@ export const navItems: NavItem[] = [
     title: 'Dashboard',
     href: '/dashboard',
     icon: 'dashboard',
-    label: 'Dashboard'
+    label: 'Dashboard',
+    Role: 'Admin'
   },
   {
-    title: 'User',
+    title: 'Services Bookings',
+    href: '/dashboard/service-booking',
+    icon: 'ListTodo',
+    label: 'Service Bookings',
+    Role: 'Admin'
+  },
+  {
+    title: 'Product Enquiry',
+    href: '/dashboard/product-enquiry',
+    icon: 'LayoutList',
+    label: 'Product Enquiry',
+    Role: 'Admin'
+  },
+  {
+    title: 'Users',
     href: '/dashboard/user',
-    icon: 'user',
-    label: 'user'
+    icon: 'Users2',
+    label: 'users',
+    Role: 'Admin'
   },
   {
-    title: 'Employee',
-    href: '/dashboard/employee',
-    icon: 'employee',
-    label: 'employee'
+    title: 'Mechanics',
+    href: '/dashboard/mechanic',
+    icon: 'UserSquare2',
+    label: 'Mechanics',
+    Role: 'Admin'
   },
   {
-    title: 'Profile',
-    href: '/dashboard/profile',
-    icon: 'profile',
-    label: 'profile'
-  },
-  {
-    title: 'Kanban',
-    href: '/dashboard/kanban',
+    title: 'Services',
+    href: '/dashboard/services',
     icon: 'kanban',
-    label: 'kanban'
+    label: 'Services',
+    Role: 'Admin'
   },
   {
-    title: 'Login',
-    href: '/',
-    icon: 'login',
-    label: 'login'
+    title: 'Products',
+    href: '/dashboard/products',
+    icon: 'Package',
+    label: 'Products',
+    Role: 'Admin'
+  },
+  {
+    title: 'App Home Sliders',
+    href: '/dashboard/app-sliders',
+    icon: 'media',
+    label: 'App Home Sliders',
+    Role: 'Admin'
+  },
+
+  {
+    title: 'App Settings',
+    href: '/dashboard/settings',
+    icon: 'settings',
+    label: 'App Settings',
+    Role: 'Admin'
+  },
+  {
+    title: 'Dashboard',
+    href: '/mechanic',
+    icon: 'dashboard',
+    label: 'Dashboard',
+    Role: 'Mechanic'
+  },
+  {
+    title: 'Services Bookings',
+    href: '/mechanic/service-booking',
+    icon: 'ListTodo',
+    label: 'Service Bookings',
+    Role: 'Mechanic'
   }
 ];

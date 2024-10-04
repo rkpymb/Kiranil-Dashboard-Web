@@ -31,6 +31,7 @@ const CheckloginStates = (props) => {
   const CheckLogin = async () => {
     const token = Cookies.get('token');
     const userDataCookie = Cookies.get('userData');
+
     if (!token) {
       setUserLogin(false);
       ChangeAlertData('User is not logged in', 'warning');
@@ -39,7 +40,7 @@ const CheckloginStates = (props) => {
       setUserLogin(true);
 
       const UData = userDataCookie ? JSON.parse(userDataCookie) : null;
-      console.log(UData);
+
       setUserData(UData);
     }
   };
@@ -53,8 +54,7 @@ const CheckloginStates = (props) => {
       setUserLogin(false);
       Cookies.remove('token');
       Cookies.remove('userData');
-
-      window.location.href = `/auth/signin`;
+      window.location.reload();
     }
   };
 
