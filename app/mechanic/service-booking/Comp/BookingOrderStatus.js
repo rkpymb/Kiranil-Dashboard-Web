@@ -223,7 +223,7 @@ const BookingOrderStatus = ({ Pdata, ReloadBooking }) => {
                         name="PaymentStatus"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Payment Status</FormLabel>
+                            <FormLabel>Payment's Status</FormLabel>
                             <FormControl>
                               <Select
                                 disabled={loading}
@@ -235,7 +235,7 @@ const BookingOrderStatus = ({ Pdata, ReloadBooking }) => {
                                 </SelectTrigger>
                                 <SelectContent>
                                   <SelectItem value="true">Paid</SelectItem>
-                                  <SelectItem value="false">Dues</SelectItem>
+                                  <SelectItem value="false">Due</SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>
